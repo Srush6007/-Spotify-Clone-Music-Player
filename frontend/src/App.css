@@ -1,0 +1,760 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #404040 #000000;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #404040;
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #606060;
+}
+
+body {
+  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #000;
+  color: #fff;
+  overflow: hidden;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+}
+
+.hover-play-button {
+  transform: translateY(4px);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.group:hover .hover-play-button {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Custom scrollbar for playlist containers */
+.playlist-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.playlist-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.playlist-scroll::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.playlist-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Hero Icons fix */
+.heroicon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Smooth transitions */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Custom focus styles */
+input:focus {
+  outline: 2px solid #1db954;
+  outline-offset: 2px;
+}
+
+/* Backdrop blur fallback */
+.backdrop-blur-md {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Gradient overlays */
+.gradient-overlay {
+  background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.8) 100%);
+}
+
+/* Animation for play button hover */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+/* Loading animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Custom button styles */
+.btn-primary {
+  background-color: #1db954;
+  border-radius: 500px;
+  padding: 8px 32px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #1ed760;
+  transform: scale(1.04);
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card-hover:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Progress bar styling */
+.progress-bar {
+  height: 4px;
+  background-color: #404040;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #1db954;
+  border-radius: 2px;
+  transition: width 0.1s linear;
+}
+
+/* Volume slider */
+.volume-slider {
+  height: 4px;
+  background-color: #404040;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.volume-fill {
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 2px;
+  transition: background-color 0.2s ease;
+}
+
+.volume-slider:hover .volume-fill {
+  background-color: #1db954;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.text-brand {
+  color: #1db954;
+}
+
+/* Responsive design helpers */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 240px;
+  }
+}
+
+@media (max-width: 640px) {
+  .sidebar {
+    width: 200px;
+  }
+  
+  .grid-responsive {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Custom animations for Spotify-like feel */
+.slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhance the visual hierarchy */
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.25rem;
+}
+
+.card-subtitle {
+  font-size: 0.875rem;
+  color: #b3b3b3;
+  line-height: 1.4;
+}
+
+/* Enhanced hover states */
+.nav-item {
+  transition: color 0.2s ease;
+}
+
+.nav-item:hover {
+  color: #ffffff !important;
+}
+
+/* Player controls styling */
+.player-control {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.player-control:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+.play-button {
+  width: 32px;
+  height: 32px;
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.play-button:hover {
+  background-color: #ffffff;
+  transform: scale(1.06);
+}
+
+/* Search input styling */
+.search-input {
+  background-color: #242424;
+  border: none;
+  border-radius: 500px;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 12px 48px 12px 40px;
+  width: 100%;
+  max-width: 364px;
+}
+
+.search-input::placeholder {
+  color: #b3b3b3;
+}
+
+.search-input:focus {
+  outline: none;
+  border: 1px solid #535353;
+  background-color: #333333;
+}
+
+/* Genre cards */
+.genre-card {
+  position: relative;
+  padding: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.genre-card:hover {
+  transform: scale(1.02);
+}
+
+/* Loading states */
+.skeleton {
+  background: linear-gradient(90deg, #242424 25%, #2a2a2a 50%, #242424 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 16px;
+  }
+  
+  .recently-played-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .browse-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+/* Accessibility improvements */
+.focus-visible:focus {
+  outline: 2px solid #1db954;
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Ensure smooth scrolling for the entire app */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow: hidden;
+}
+
+/* Improved grid layout for better album visibility */
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 24px;
+  padding: 10px 0;
+  /* Ensure proper scrolling behavior */
+  overflow: visible;
+  /* Improve performance */
+  will-change: transform;
+}
+
+.album-grid-item {
+  background-color: rgba(30, 30, 30, 0.5);
+  border-radius: 8px;
+  padding: 16px;
+  transition: background-color 0.3s ease;
+  /* Ensure consistent height */
+  display: flex;
+  flex-direction: column;
+  /* Fixed height for uniformity */
+  height: 220px;
+  /* Improve performance */
+  will-change: transform;
+  /* Ensure proper box sizing */
+  box-sizing: border-box;
+  /* Add consistent alignment */
+  align-items: stretch;
+}
+
+.album-grid-item:hover {
+  background-color: rgba(40, 40, 40, 0.7);
+}
+
+.album-cover-container {
+  position: relative;
+  width: 100%;
+  /* Fixed aspect ratio */
+  aspect-ratio: 1/1;
+  margin-bottom: 16px;
+  flex-shrink: 0;
+}
+
+.album-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
+
+.album-play-button {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background-color: #1db954;
+  color: black;
+  border-radius: 50%;
+  padding: 8px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.album-grid-item:hover .album-play-button {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.album-title {
+  font-weight: bold;
+  color: white;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 1;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.album-description {
+  font-size: 0.75rem;
+  color: #b3b3b3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 0;
+  line-height: 1.4;
+  text-align: left;
+}
+
+/* Recently played grid */
+.recently-played-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 24px;
+  padding: 10px 0;
+}
+
+.recently-played-item {
+  background-color: rgba(30, 30, 30, 0.5);
+  border-radius: 8px;
+  padding: 16px;
+  transition: background-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  /* Fixed height for uniformity */
+  height: 220px;
+  box-sizing: border-box;
+  align-items: stretch;
+}
+
+.recently-played-item:hover {
+  background-color: rgba(40, 40, 40, 0.7);
+}
+
+.recently-played-cover-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+  margin-bottom: 16px;
+  flex-shrink: 0;
+}
+
+.recently-played-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
+
+.recently-played-play-button {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background-color: #1db954;
+  color: black;
+  border-radius: 50%;
+  padding: 8px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.recently-played-item:hover .recently-played-play-button {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.recently-played-title {
+  font-weight: bold;
+  color: white;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 1;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.recently-played-artist {
+  font-size: 0.75rem;
+  color: #b3b3b3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 0;
+  line-height: 1.4;
+  text-align: left;
+}
+
+/* Ensure the main content area can scroll smoothly */
+.main-content {
+  overflow-y: auto;
+  flex: 1;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  /* Improve performance */
+  will-change: scroll-position;
+}
+
+/* Make sure the app container can scroll */
+#root {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* App container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .album-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .album-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .album-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1281px) and (max-width: 1536px) {
+  .album-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (min-width: 1537px) {
+  .album-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* Fix for scroll performance */
+.main-content {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Add scroll support for playlist sections */
+.playlist-row {
+  display: flex;
+  overflow-x: auto;
+  gap: 24px;
+  padding: 10px 0 20px 0;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+}
+
+.playlist-row::-webkit-scrollbar {
+  height: 8px;
+}
+
+.playlist-row::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.playlist-row::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.playlist-row::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.playlist-row-item {
+  flex: 0 0 auto;
+  width: 150px;
+}
+
+/* Ensure the main content area can scroll */
+.main-content {
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Make sure the app container can scroll */
+#root {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Spotify Logo Styling */
+.sidebar-logo-container {
+  padding: 24px 16px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 80px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.sidebar-logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+/* Enhanced text-based logo to match Spotify's official branding */
+.text-logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: white;
+  margin: 0;
+  padding: 0;
+  letter-spacing: -1px;
+}
+
+.text-logo-icon {
+  background-color: white;
+  color: black;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  flex-shrink: 0;
+  font-weight: 900;
+  font-size: 20px;
+}
+
+/* Sidebar styling */
+.sidebar {
+  background-color: #000;
+  width: 240px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.sidebar-logo-container {
+  padding: 24px 16px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 80px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Ensure the logo container takes full width */
+.sidebar > div:first-child {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
