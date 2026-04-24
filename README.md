@@ -1,197 +1,213 @@
-# Spotify Clone
+# 🎵 Spotify Clone
 
-A full-stack Spotify clone application built with React, FastAPI, and MongoDB. This project replicates the core functionality and UI of Spotify, allowing users to browse music, create playlists, and play songs.
-
-![Spotify Clone Screenshot](./frontend/public/screenshot.png) <!-- You would need to add an actual screenshot -->
-
-## Table of Contents
-
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-  - [Frontend Setup](#frontend-setup)
-  - [Backend Setup](#backend-setup)
-- [Environment Variables](#environment-variables)
-- [Running the Application](#running-the-application)
-  - [Development Mode](#development-mode)
-  - [Production Mode](#production-mode)
-- [Project Structure](#project-structure)
-- [API Endpoints](#api-endpoints)
-- [Contributing](#contributing)
-- [License](#license)
-
-## Features
-
-- User authentication and profile management
-- Music browsing and search functionality
-- Playlist creation and management
-- Song playback controls
-- Responsive design for all device sizes
-- Dark mode UI similar to Spotify
-- Album and artist exploration
-
-## Tech Stack
-
-### Frontend
-- **React** - JavaScript library for building user interfaces
-- **React Router** - Declarative routing for React
-- **Tailwind CSS** - Utility-first CSS framework
-- **Heroicons** - Beautiful hand-crafted SVG icons
-- **Axios** - Promise based HTTP client
-- **Craco** - Create React App Configuration Override
-
-### Backend
-- **FastAPI** - Modern, fast (high-performance) web framework for building APIs
-- **MongoDB** - Document-oriented NoSQL database
-- **Motor** - Async Python driver for MongoDB
-- **Pydantic** - Data validation and settings management
-- **Uvicorn** - Lightning-fast ASGI server
-
-### Database
-- **MongoDB** - NoSQL database for storing user data, playlists, and music metadata
-
-## Prerequisites
-
-Before you begin, ensure you have the following installed:
-- Node.js (v14 or higher)
-- Python (v3.8 or higher)
-- MongoDB (v4.4 or higher)
-- npm or yarn package manager
-- Git
-
-## Installation
-
-### Frontend Setup
-
-1. Navigate to the frontend directory:
-   ```bash
-   cd frontend
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
-
-### Backend Setup
-
-1. Navigate to the backend directory:
-   ```bash
-   cd backend
-   ```
-
-2. Create a virtual environment:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
-3. Install Python dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-## Environment Variables
-
-### Frontend
-Create a `.env` file in the `frontend` directory:
-```env
-# Frontend environment variables
-REACT_APP_API_URL=http://localhost:8000
-```
-
-### Backend
-Create a `.env` file in the `backend` directory:
-```env
-# MongoDB connection
-MONGO_URL=mongodb://localhost:27017
-DB_NAME=spotify_clone
-
-# CORS settings
-CORS_ORIGINS=http://localhost:3000
-```
-
-## Running the Application
-
-### Development Mode
-
-1. Start the backend server:
-   ```bash
-   cd backend
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   python server.py
-   ```
-   The backend will be available at `http://localhost:8000`
-
-2. Start the frontend development server:
-   ```bash
-   cd frontend
-   npm start
-   # or
-   yarn start
-   ```
-   The frontend will be available at `http://localhost:3000`
-
-### Production Mode
-
-1. Build the frontend:
-   ```bash
-   cd frontend
-   npm run build
-   # or
-   yarn build
-   ```
-
-2. Serve the built files using the backend or a web server like Nginx.
-
-## Project Structure
-
-```
-spotify-clone/
-├── backend/
-│   ├── server.py          # Main FastAPI application
-│   ├── requirements.txt   # Python dependencies
-│   └── .env              # Environment variables
-├── frontend/
-│   ├── public/           # Static files
-│   ├── src/              # React source code
-│   │   ├── components/   # React components
-│   │   ├── pages/        # Page components
-│   │   ├── App.js        # Main App component
-│   │   └── index.js      # Entry point
-│   ├── package.json      # Frontend dependencies
-│   └── .env             # Frontend environment variables
-└── README.md
-```
-
-## API Endpoints
-
-### Base URL
-`http://localhost:8000/api`
-
-### Endpoints
-- `GET /` - Health check endpoint
-- `POST /status` - Create a status check record
-- `GET /status` - Retrieve status check records
-
-## Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a new branch (`git checkout -b feature/your-feature`)
-3. Make your changes
-4. Commit your changes (`git commit -m 'Add some feature'`)
-5. Push to the branch (`git push origin feature/your-feature`)
-6. Open a pull request
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+A high-fidelity, full-stack Spotify clone built with **React**, **FastAPI**, and **MongoDB**. Replicates the complete Spotify desktop and mobile experience — including real audio playback, drag-to-scrub controls, Now Playing panel, context menus, and a fully responsive mobile layout.
 
 ---
 
-Built with ❤️ as a Spotify clone project
+## ✨ Features
+
+### 🎨 UI / Design
+- Pixel-perfect dark theme (`#121212` / `#181818`) matching Spotify's design system
+- Spotify SVG green logo and authentic favicon
+- Circular nav arrows, **UPGRADE** pill button, user avatar in TopBar
+- Sticky TopBar with dynamic gradient fade-in on scroll
+- Time-aware greeting — *Good morning / afternoon / evening*
+
+### 🏠 Home Page
+- **Pinned quick-play grid** — 6 recently played songs in a 3-column layout
+- **Made for You** — 20 equal-size uniform cards (playlists + Daily Mixes, Discover Weekly, Release Radar, On Repeat, and more)
+- **Recently Played** — scrollable song grid with hover play buttons
+
+### 🔍 Search Page
+- Pill-shaped search input
+- **Top Result** large card + **Songs** grouped results list
+- **Browse All** — colourful genre cards with rotated album art
+
+### 📚 Library Page
+- Filter pills — All / Playlists / Albums / Artists
+- List / Grid view toggle
+
+### 🎼 Playlist Page
+- **Gradient hero header** — unique colour gradient per playlist, fades to black
+- Large 208px artwork with drop shadow
+- Sticky table header — `#`, Title, Album, ♡, ⏱
+- Active track highlighted in Spotify green
+- Per-track like button (hover → turns green)
+- Track number swaps to play icon on hover
+
+### 🎵 Player Bar
+- **Real audio playback** via SoundHelix CDN (10 unique tracks)
+- **Drag-to-scrub** progress bar — smooth drag anywhere on the track
+- **Drag volume slider** — same drag interaction
+- Live `currentTime / duration` display
+- Green circular play/pause button
+- Shuffle (random queue) with green dot indicator
+- Repeat (loops song) with green dot indicator
+- Muted speaker icon when muted / volume = 0
+- Heart like button for current song
+
+### ⏭ Song Queue
+- Next / Prev track buttons (functional)
+- Prev restarts current track if > 3 seconds in
+- Shuffle mode picks a random next song
+- Auto-advances to next song when track ends
+
+### ⌨️ Keyboard Shortcuts
+| Key | Action |
+|---|---|
+| `Space` | Play / Pause |
+| `→` | Next song |
+| `←` | Previous song |
+| `M` | Toggle mute |
+
+### 📋 Now Playing Panel
+- Toggle with the panel icon in the player bar (turns green when active)
+- Slides in from the right with animation
+- Large album artwork, song info + like button
+- Lyrics placeholder panel (ready for Musixmatch / Genius API)
+- **Up Next** queue — next 5 songs, clickable to play
+- Full-screen overlay on mobile
+
+### 🖱 Context Menus
+- **Right-click any track** on Home, Search, or Playlist pages
+- Smart position correction — never overflows the screen
+- Actions: Play now, Save to Liked Songs, Add to playlist, Go to album, Go to artist, Share
+- Dismisses on any outside click
+- Slides up as a **bottom sheet** on mobile
+
+### 📱 Mobile Responsive
+- **Bottom navigation bar** — Home / Search / Your Library with active-route highlight
+- **Mini player** floats above the bottom nav with album thumb, title, play button and a green progress bar
+- Tapping the mini player opens the Now Playing full-screen panel
+- Desktop sidebar and full player bar hidden on mobile
+- All grids collapse to **2 columns** on small screens
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+| Tech | Purpose |
+|---|---|
+| **React 18** | UI framework |
+| **React Router v6** | Client-side routing |
+| **Tailwind CSS** | Utility-first styling with custom Spotify tokens |
+| **Heroicons** | SVG icon library |
+| **Axios** | HTTP client |
+| **Craco** | CRA config override |
+
+### Backend
+| Tech | Purpose |
+|---|---|
+| **FastAPI** | REST API framework |
+| **MongoDB** | NoSQL database |
+| **Motor** | Async MongoDB driver |
+| **Pydantic** | Data validation |
+| **Uvicorn** | ASGI server |
+
+---
+
+## 📁 Project Structure
+
+```
+Spotify/
+├── DESIGN.md                  # UI/UX design specifications
+├── README.md
+├── backend/
+│   ├── server.py              # FastAPI application
+│   ├── requirements.txt       # Python dependencies
+│   └── .env                   # Backend environment variables
+└── frontend/
+    ├── public/
+    │   ├── favicon.svg        # Spotify SVG favicon
+    │   └── index.html
+    ├── src/
+    │   ├── App.js             # All components (Sidebar, TopBar, Player, Pages…)
+    │   ├── App.css            # Component styles
+    │   ├── index.css          # Global styles & font imports
+    │   └── index.js           # React entry point
+    ├── tailwind.config.js     # Spotify design tokens
+    └── package.json
+```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js ≥ 14
+- Python ≥ 3.8
+- MongoDB ≥ 4.4
+- yarn or npm
+
+### Frontend Setup
+
+```bash
+cd frontend
+yarn install
+yarn start
+```
+App runs at **http://localhost:3000**
+
+### Backend Setup
+
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate       # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+python server.py
+```
+API runs at **http://localhost:8000**
+
+---
+
+## ⚙️ Environment Variables
+
+**`frontend/.env`**
+```env
+REACT_APP_API_URL=http://localhost:8000
+```
+
+**`backend/.env`**
+```env
+MONGO_URL=mongodb://localhost:27017
+DB_NAME=spotify_clone
+CORS_ORIGINS=http://localhost:3000
+```
+
+---
+
+## 🔌 API Endpoints
+
+Base URL: `http://localhost:8000/api`
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/` | Health check |
+| GET | `/songs` | List all songs |
+| GET | `/playlists` | List all playlists |
+| POST | `/status` | Create status record |
+| GET | `/status` | Get status records |
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch — `git checkout -b feature/amazing-feature`
+3. Commit your changes — `git commit -m 'Add amazing feature'`
+4. Push to the branch — `git push origin feature/amazing-feature`
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+<div align="center">
+  Built with ❤️ — a high-fidelity Spotify clone
+</div>
